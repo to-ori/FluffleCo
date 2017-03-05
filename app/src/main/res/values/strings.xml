@@ -10,4 +10,10 @@
     <string name="log_in">Log In</string>
     <string name="sign_up_here">Sign Up Here</string>
     <string name="welcomeMessage">Welcome to the Fuffle Collaboration. Please select the option approiate to you</string>
+    <string name="email">Email:</string>
+    <string name="username1">Username:</string>
+    <string name="passowrd1">Passowrd:</string>
+    <string name="logout">Logout</string>
+    <string name="name1">Name:</string>
+    <string name="user_details">User Details</string>
 </resources>

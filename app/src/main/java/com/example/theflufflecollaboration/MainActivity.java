@@ -1,51 +1,38 @@
-package com.example.theflufflecollaboration;
+    package com.example.theflufflecollaboration;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
+    import android.content.Intent;
+    import android.os.Bundle;
+    import android.support.v7.app.AppCompatActivity;
+    import android.view.View;
+    import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity {
+    public class MainActivity extends AppCompatActivity {
 
-    DatabaseHelper helper = new DatabaseHelper(this);
+        EditText etusername, etpassword;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
-
-    public void onButtonClick(View v)
-{
-    if(v.getId()== R.id.Blogin)
-    {
-        EditText a = (EditText) findViewById(R.id.TFusername);
-        String str = a.getText().toString();
-        EditText b = (EditText) findViewById(R.id.TFpassword);
-        String pass = b.getText().toString();
-
-        String password = helper.searchPass(str);
-        if (pass.equals(password))
-        {
-
-            Intent i = new Intent(MainActivity.this, Display.class);
-            i.putExtra("Username", str);
-            startActivity(i);
-        } else
-        {
-            //dispaly a pop up message to say passswords not the same.
-            Toast temp = Toast.makeText(MainActivity.this, "Incorrect username or password. \n Please try again.", Toast.LENGTH_SHORT);
-            temp.show();
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+            etusername = (EditText) findViewById(R.id.TVusername);
+            etpassword = (EditText) findViewById(R.id.TVpassword);
         }
-    }
 
-    if(v.getId()==R.id.Bsignup)
-    {
-        Intent i = new Intent(MainActivity.this, SignUp.class);
+        public void onRegisterClick(View v) {
+            Intent i = new Intent(MainActivity.this, Register.class);
 
-        startActivity(i);
+            startActivity(i);
+        }
+
+        public void onLoginClick(View v) {
+
+            String username = etusername.getText().toString();
+            String password = etpassword.getText().toString();
+
+            String type = "login";
+            BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+            backgroundWorker.execute(type, username, password);
+
+        }
+
     }
-}
-}

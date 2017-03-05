@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/TFname" />
+        android:id="@+id/TVname" />
 
     <TextView
         android:text="@string/email_address"
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/TFemail"
+        android:id="@+id/TVemail"
         android:textSize="18sp" />
 
     <TextView
@@ -88,6 +88,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/Bsignupbutton"
-        android:onClick="onSignUpClick" />
+        android:onClick="onRegisterClick" />
+
+    <Button
+        android:text="Back to login screen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Blogin"
+        android:onClick="onLoginClick"/>
 
 </LinearLayout>
