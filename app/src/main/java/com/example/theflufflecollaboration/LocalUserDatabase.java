@@ -50,10 +50,7 @@ public class LocalUserDatabase {
     //check if a user is logged in or out
     public boolean getUserLoggedIn()
     {
-        if(localUserDatabase.getBoolean("loggedIn", false))
-            return true;
-        else
-            return false;
+        return localUserDatabase.getBoolean("loggedIn", false);
     }
 
     //clear the user data stored
