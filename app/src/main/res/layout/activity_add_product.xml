@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_product"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.theflufflecollaboration.AddProduct">
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/et_productname"
+        android:layout_alignBaseline="@+id/textView16"
+        android:layout_alignBottom="@+id/textView16"
+        android:layout_toRightOf="@+id/textView16"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:text="Designed for:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView23"
+        android:textStyle="normal|bold"
+        android:layout_below="@+id/et_productname"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Product Name: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:id="@+id/textView16"
+        android:textStyle="normal|bold"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView23"
+        android:id="@+id/rg_petType" >
+
+        <RadioButton
+            android:text="cat"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/rb_cat" />
+
+        <RadioButton
+            android:text="dog"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/rb_dog" />
+        <RadioButton
+            android:text="small pets"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/rb_smallPet" />
+        <RadioButton
+            android:text="other"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/rb_otherpet" />
+    </RadioGroup>
+
+    <TextView
+        android:text="Product Type: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rg_petType"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/textView24"
+        android:textStyle="normal|bold" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView24"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/rg_productType">
+
+        <RadioButton
+            android:text="food"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/rb_food" />
+
+        <RadioButton
+            android:text="accessories"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/rb_accessories" />
+        <RadioButton
+            android:text="cage "
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/rb_cage" />
+        <RadioButton
+            android:text="other"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/rb_otherproduct" />
+  </RadioGroup>
+
+    <TextView
+        android:text="Product Description:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rg_petType"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="23dp"
+        android:id="@+id/textView25"
+        android:textStyle="normal|bold" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:layout_below="@+id/textView25"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/et_description"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="Submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/et_productname"
+        android:layout_alignStart="@+id/et_productname"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="14dp"
+        android:id="@+id/productSubmitbtn" />
+
+</RelativeLayout>

@@ -10,24 +10,25 @@ import android.view.View;
 import android.widget.TextView;
 
 import static android.content.ContentValues.TAG;
-import static com.example.theflufflecollaboration.R.layout.welcome;
+import static com.example.theflufflecollaboration.R.layout.open_page;
 
 /**
  * Created by 11486248 on 19/02/2017.
  */
 
-public class Welcome extends Activity implements View.OnTouchListener {
+public class OpenPage extends Activity implements View.OnTouchListener {
 
     GestureDetector gestureDetector;
-
-    //welcome.setOnTouchListener(this);
+    LocalUserDatabase localUserDatabase;
+    //open_page.setOnTouchListener(this);
     //take any layout on which you want your gesture listener;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(welcome);
+        setContentView(open_page);
+        localUserDatabase= new LocalUserDatabase(this);
         TextView tv = (TextView)findViewById(R.id.WelcomeMessage);
 
         gestureDetector = new GestureDetector(this, new OnSwipeListener() {
@@ -35,15 +36,19 @@ public class Welcome extends Activity implements View.OnTouchListener {
             @Override
             public boolean onSwipe(Direction direction) {
                 if (direction == Direction.left) {
-                    Intent i = new Intent(Welcome.this, MainActivity.class);
+                    if(localUserDatabase.getUserLoggedIn()) {
+                        Intent i = new Intent(OpenPage.this, MainMenu.class);
+                        startActivity(i);
 
-                    startActivity(i);
+                    }else{
+                        Intent i = new Intent(OpenPage.this, UserLogin.class);
+                        startActivity(i);
+                    }
                     Log.d(TAG, "onSwipe: up");
-
                 }
 
                 if (direction == Direction.right) {
-                    Intent j = new Intent(Welcome.this, AdminLogIn.class);
+                    Intent j = new Intent(OpenPage.this, AdminLogIn.class);
 
                     startActivity(j);
                     Log.d(TAG, "onSwipe: right");

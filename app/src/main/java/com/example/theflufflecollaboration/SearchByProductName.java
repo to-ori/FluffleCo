@@ -1,9 +1,9 @@
 package com.example.theflufflecollaboration;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -20,63 +20,62 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-/**
- * Created by 11486248 on 19/02/2017.
- */
-public class AdminLogIn extends Activity {
-    String email, password;
-    EditText et_email, et_password;
-    String loggedin;
+public class SearchByProductName extends AppCompatActivity {
 
+    LocalUserDatabase localUserDatabase;
+    EditText et_ProductName;
+    String json_string, productName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.admin_log_in);
-        et_email = (EditText) findViewById(R.id.AdminEmail);
-        et_password = (EditText) findViewById(R.id.adminPass);
+        setContentView(R.layout.activity_search_by_product_name);
+        et_ProductName = (EditText)findViewById(R.id.et_productName);
+        localUserDatabase= new LocalUserDatabase(this);
     }
 
-    public void onButtonClick(View v) {
-        if (v.getId() == R.id.Adlogin) {
+    public void onSearch(View view){
+        String productname = et_ProductName.getText().toString();
+        new BackgroundTask().execute(productname);
+    }
 
-            email = et_email.getText().toString();
-            password = et_password.getText().toString();
+    public void onLogout(View view){
+        localUserDatabase.clearData();
+        startActivity(new Intent(this, OpenPage.class));
+    }
 
-            new BackgroundTask().execute();
-
+    public void checkString(){
+        if(json_string==null){
+            Toast.makeText(getApplicationContext(), "No products found", Toast.LENGTH_LONG).show();
+        }else {
+            Intent intent = new Intent(this, DisplayListView.class);
+            intent.putExtra("json_data",json_string);
+            startActivity(intent );
         }
     }
 
-    public void verify(){
-        if(loggedin.equals("true")){
-            startActivity(new Intent(this, AddProduct.class));
-        }else{
-            Toast.makeText(getApplicationContext(), "Login details incorrect, please try again. If you are not a FluffleCo admin please log in as a normal user.", Toast.LENGTH_LONG).show();
-
-        }
-    }
-
-    class BackgroundTask extends AsyncTask<Void, Void, String> {
-
+    class BackgroundTask extends AsyncTask<String, Void,String>
+    {
         String result;
-        String admin_login_url;
+        String product_url;
         String JSON_STRING;
 
         @Override
         protected void onPreExecute() {
-            admin_login_url = "http://danu6.it.nuigalway.ie/FluffelCo/adminlogin.php";
+            product_url="http://danu6.it.nuigalway.ie/FluffelCo/searchbyproductname.php";
             result = null;
         }
 
         @Override
-        protected String doInBackground(Void... params) {
+        protected String doInBackground(String... params) {
 
+
+            String productName = params[0];
             URL url = null;
 
 
             try {
 
-                url = new URL(admin_login_url);
+                url = new URL(product_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
@@ -84,8 +83,7 @@ public class AdminLogIn extends Activity {
 
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-                String post_data = URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(email, "UTF-8") + "&"
-                        + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8");
+                String post_data = URLEncoder.encode("productName", "UTF-8") + "=" + URLEncoder.encode(productName, "UTF-8");
 
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
@@ -106,6 +104,7 @@ public class AdminLogIn extends Activity {
                 httpURLConnection.disconnect();
                 result = stringBuilder.toString().trim();
                 return result;
+
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -122,8 +121,9 @@ public class AdminLogIn extends Activity {
 
         @Override
         protected void onPostExecute(String result) {
-            loggedin=result;
-            verify();
+            json_string=result;
+            checkString();
+
         }
     }
 

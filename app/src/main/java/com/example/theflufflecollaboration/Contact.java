@@ -7,10 +7,11 @@
     public class Contact {
 
 
-        String name, email, username, password;
+        String id, name, email, username, password;
 
-      public Contact(String name, String email, String username, String password)
+      public Contact(String id, String name, String email, String username, String password)
       {
+          this.id=id;
           this.name= name;
           this.email = email;
           this.username = username;

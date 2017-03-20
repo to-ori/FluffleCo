@@ -1,28 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-package="com.example.theflufflecollaboration">
+    package="com.example.theflufflecollaboration">
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
-    android:allowBackup="true"
-    android:icon="@mipmap/ic_launcher"
-    android:label="@string/app_name"
-    android:supportsRtl="true"
-    android:theme="@style/AppTheme">
-    <activity android:name=".MainActivity"></activity>
-    <activity android:name=".AdminLogIn"></activity>
-    <activity android:name=".DisplayInfo"></activity>
-    <activity android:name=".Register"></activity>
-    <activity android:name=".Welcome">
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".AdminLogIn" />
+        <activity android:name=".OpenPage">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-
-    </activity>
-</application>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".EditDetails" />
+        <activity android:name=".SearchBy" />
+        <activity android:name=".SearchByProductName" />
+        <activity android:name=".SearchByProductType" />
+        <activity android:name=".SearchByPetType" />
+        <activity android:name=".DisplayListView" />
+        <activity android:name=".DisplayProduct" />
+        <activity android:name=".DisplayReview" />
+        <activity android:name=".LeaveReview" />
+        <activity android:name=".AddProduct" />
+        <activity android:name=".DisplayDetails" />
+        <activity android:name=".MainMenu" />
+        <activity android:name=".Register" />
+        <activity android:name=".UserLogin" />
+        <activity android:name=".FluffleCommunity"></activity>
+    </application>
 
 </manifest>
