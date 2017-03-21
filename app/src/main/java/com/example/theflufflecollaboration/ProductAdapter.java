@@ -73,9 +73,7 @@ public class ProductAdapter extends ArrayAdapter {
 
     static class ProductHolder
     {
-        TextView tx_name, tx_description, tx_pet, tx_product;
-
-
+        TextView tx_name, tx_pet, tx_product;
     }
 }
 

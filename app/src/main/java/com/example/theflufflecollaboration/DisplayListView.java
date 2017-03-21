@@ -50,7 +50,7 @@ public class DisplayListView extends AppCompatActivity {
             jsonArray = jsonObject.getJSONArray("server_response");
             int count = 0;
             String id, name, description, pet_type, product_type;
-            
+
             while(count<jsonArray.length())
             {
                 JSONObject JO = jsonArray.getJSONObject(count);

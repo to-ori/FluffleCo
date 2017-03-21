@@ -33,7 +33,11 @@
         <activity android:name=".MainMenu" />
         <activity android:name=".Register" />
         <activity android:name=".UserLogin" />
-        <activity android:name=".FluffleCommunity"></activity>
+        <activity android:name=".FluffleCommunity" />
+        <activity android:name=".CreatePost" />
+        <activity android:name=".DisplayPosts" />
+        <activity android:name=".ReplyToPost" />
+        <activity android:name=".DisplayListOfPost"></activity>
     </application>
 
 </manifest>

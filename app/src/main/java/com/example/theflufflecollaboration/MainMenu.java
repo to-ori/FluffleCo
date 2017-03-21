@@ -42,4 +42,7 @@ public class MainMenu extends AppCompatActivity {
         startActivity(new Intent(this, SearchBy.class));
     }
 
+    public void onCommunity(View view){
+        startActivity(new Intent(this, FluffleCommunity.class));
+    }
 }

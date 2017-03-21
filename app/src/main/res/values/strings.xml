@@ -9,7 +9,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="log_in">Log In</string>
     <string name="sign_up_here">Sign Up Here</string>
-    <string name="welcomeMessage">Welcome to the Fuffle Collaboration. Please select the option approiate to you</string>
+    <string name="welcomeMessage">Welcome to the Fuffle Collaboration. \n\n\nPlease select the option approiate to you:\n\n\n\n\nIf you are a registered admin please swipe right.\n\n\n\nIf you are a registered user or would like to join please swip left to access the Fluffle Collaboration.  </string>
     <string name="email">Email:</string>
     <string name="username1">Username:</string>
     <string name="passowrd1">Passowrd:</string>
