@@ -37,7 +37,8 @@
         <activity android:name=".CreatePost" />
         <activity android:name=".DisplayPosts" />
         <activity android:name=".ReplyToPost" />
-        <activity android:name=".DisplayListOfPost"></activity>
+        <activity android:name=".DisplayListOfPost" />
+        <activity android:name=".DisplayCommentOnReview"></activity>
     </application>
 
 </manifest>

@@ -28,7 +28,7 @@ public class DisplayListOfPost extends AppCompatActivity {
         localPostDatabase = new LocalPostDatabase(this);
         localUserDatabase= new LocalUserDatabase(this);
         postAdapter = new PostAdapter(this, R.layout.post_row_layout);
-        listView =(ListView) findViewById(R.id.listview);
+        listView =(ListView) findViewById(R.id.postlistview);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -37,9 +37,12 @@ public class DisplayListOfPost extends AppCompatActivity {
                 localPostDatabase.storePost(selectedPost);
                 Intent i = new Intent (DisplayListOfPost.this, DisplayPosts.class );
                 startActivity(i);
-            }
-            
-            listView.setAdapter(postAdapter);
+            }});
+        listView.setAdapter(postAdapter);
+        json_string =getIntent().getExtras().getString("json_data");
+
+
+
             json_string = getIntent().getExtras().getString("json_data");
             try {
                 jsonObject = new JSONObject(json_string);
@@ -66,7 +69,7 @@ public class DisplayListOfPost extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        });
+
     }
 
 
