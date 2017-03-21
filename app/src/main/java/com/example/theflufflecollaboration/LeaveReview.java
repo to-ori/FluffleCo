@@ -79,6 +79,9 @@ public class LeaveReview extends AppCompatActivity {
 
         new BackgroundTask().execute();
     }
+    public void onMainMenu(View view){
+        startActivity(new Intent(this, MainMenu.class));
+    }
 
     //this class interacts with the PHP file that interacts with the server
     class BackgroundTask extends AsyncTask<Void, Void,String> {

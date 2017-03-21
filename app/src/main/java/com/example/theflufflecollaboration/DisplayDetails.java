@@ -50,6 +50,10 @@ public class DisplayDetails extends AppCompatActivity {
         startActivity(new Intent(this, OpenPage.class));
     }
 
+    public void onMainMenu(View view){
+        startActivity(new Intent(this, MainMenu.class));
+    }
+
     public void onEdit(View view) {
         Intent i = new Intent(this, EditDetails.class);
 

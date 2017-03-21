@@ -101,4 +101,14 @@
         android:id="@+id/mainMenu"
         android:layout_alignTop="@+id/logOutbnt"
         android:onClick="onMainMenu"/>
+
+    <Button
+        android:text="other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/cagebtn"
+        android:layout_alignLeft="@+id/beddingbtn"
+        android:layout_alignStart="@+id/beddingbtn"
+        android:id="@+id/otherbtn"
+        android:onClick="onOther"/>
 </RelativeLayout>

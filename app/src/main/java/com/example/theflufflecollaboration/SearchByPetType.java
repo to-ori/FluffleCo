@@ -7,6 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -23,6 +27,8 @@ public class SearchByPetType extends AppCompatActivity {
 
     LocalUserDatabase localUserDatabase;
     String json_string, type;
+    JSONObject jsonObject;
+    JSONArray jsonArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +43,20 @@ public class SearchByPetType extends AppCompatActivity {
         startActivity(new Intent(this, OpenPage.class));
     }
 
+    public void onMainMenu(View view){
+        startActivity(new Intent(this, MainMenu.class));
+    }
+
     public void checkString(){
-        if(json_string==null){
+        try {
+            jsonObject = new JSONObject(json_string);
+            jsonArray = jsonObject.getJSONArray("server_response");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if(jsonArray.length()<1){
           Toast.makeText(getApplicationContext(), "No products found", Toast.LENGTH_LONG).show();
         }else {
-
             Intent intent = new Intent(this, DisplayListView.class);
             intent.putExtra("json_data",json_string);
             startActivity(intent );
@@ -64,6 +79,10 @@ public class SearchByPetType extends AppCompatActivity {
         type="small pets";
         new SearchByPetType.BackgroundTask().execute(type);
 
+    }
+    public void onOther(View view){
+        type = "other";
+        new SearchByPetType.BackgroundTask().execute(type);
     }
 
     class BackgroundTask extends AsyncTask<String, Void,String>

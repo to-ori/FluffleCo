@@ -50,9 +50,7 @@ public class DisplayListView extends AppCompatActivity {
             jsonArray = jsonObject.getJSONArray("server_response");
             int count = 0;
             String id, name, description, pet_type, product_type;
-            if(jsonArray.length()<1){
-                Toast.makeText(getApplicationContext(), "No products found", Toast.LENGTH_LONG).show();
-            }
+            
             while(count<jsonArray.length())
             {
                 JSONObject JO = jsonArray.getJSONObject(count);
@@ -65,11 +63,10 @@ public class DisplayListView extends AppCompatActivity {
                 Product product= new Product(id, name, description, pet_type, product_type);
                 productAdapter.add(product);
                 count++;
-
-
             }
             String productsFound=count +" products found";
             Toast.makeText(getApplicationContext(), productsFound, Toast.LENGTH_LONG).show();
+
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -77,6 +74,11 @@ public class DisplayListView extends AppCompatActivity {
 
 
     }
+
+    public void onMainMenu(View view){
+        startActivity(new Intent(this, MainMenu.class));
+    }
+
     public void onLogout(View view){
         localUserDatabase.clearData();
         startActivity(new Intent(this, OpenPage.class));

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_welcome"
     android:layout_width="match_parent"
@@ -17,6 +18,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="106dp"
         android:layout_marginStart="106dp"
         android:layout_marginTop="41dp"
@@ -33,26 +35,6 @@
         android:layout_toEndOf="@+id/textView" />
 
     <Button
-        android:text="User Details"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="98dp"
-        android:id="@+id/btnUD"
-        android:onClick="onUserDetails"/>
-
-    <Button
-        android:text="Search Products"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnUD"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp"
-        android:id="@+id/btnSP"
-        android:onClick="onSearchProducts"/>
-
-    <Button
         android:text="Log out"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,5 +43,46 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:onClick="onLogout"/>
+
+    <Button
+        android:text="Community"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnSP"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="61dp"
+        android:id="@+id/btnC"
+        android:onClick="onCommunity" />
+
+    <Button
+        android:text="Search Products"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="57dp"
+        android:id="@+id/btnSP"
+        android:onClick="onSearchProducts"
+        android:layout_below="@+id/btnUD"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="User Details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="97dp"
+        android:id="@+id/btnUD"
+        android:onClick="onUserDetails"
+        android:layout_below="@+id/textView"
+        android:layout_alignRight="@+id/btnC"
+        android:layout_alignEnd="@+id/btnC" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_below="@+id/textView"
+        android:layout_toLeftOf="@+id/tx_name"
+        android:layout_toStartOf="@+id/tx_name"
+        android:layout_marginTop="22dp"
+        android:id="@+id/imageView" />
 
 </RelativeLayout>

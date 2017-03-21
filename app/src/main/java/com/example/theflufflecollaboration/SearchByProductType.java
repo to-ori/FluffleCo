@@ -7,6 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -21,6 +25,8 @@ import java.net.URLEncoder;
 
 public class SearchByProductType extends AppCompatActivity {
 
+    JSONObject jsonObject;
+    JSONArray jsonArray;
     LocalUserDatabase localUserDatabase;
     String json_string, type;
     @Override
@@ -31,13 +37,23 @@ public class SearchByProductType extends AppCompatActivity {
     }
 
     public void checkString(){
-        if(json_string==null){
+        try{
+        jsonObject = new JSONObject(json_string);
+        jsonArray = jsonObject.getJSONArray("server_response");
+    } catch (JSONException e) {
+        e.printStackTrace();
+    }
+    if(jsonArray.length()<1){
             Toast.makeText(getApplicationContext(), "No products found", Toast.LENGTH_LONG).show();
         }else {
             Intent intent = new Intent(this, DisplayListView.class);
             intent.putExtra("json_data",json_string);
             startActivity(intent );
         }
+    }
+
+    public void onMainMenu(View view){
+        startActivity(new Intent(this, MainMenu.class));
     }
 
     public void onLogout(View view){
@@ -47,6 +63,10 @@ public class SearchByProductType extends AppCompatActivity {
 
     public void onFood(View view){
         type = "food";
+        new BackgroundTask().execute(type);
+    }
+    public void onOther(View view){
+        type = "other";
         new BackgroundTask().execute(type);
     }
 

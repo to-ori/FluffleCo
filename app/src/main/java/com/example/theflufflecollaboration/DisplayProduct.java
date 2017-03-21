@@ -65,6 +65,11 @@ public class DisplayProduct extends AppCompatActivity {
         }
 
     }
+
+    public void onMainMenu(View view){
+        startActivity(new Intent(this, MainMenu.class));
+    }
+
     public void onLogout(View view){
         localUserDatabase.clearData();
         startActivity(new Intent(this, OpenPage.class));

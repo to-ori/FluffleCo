@@ -32,6 +32,10 @@ public class SearchBy extends AppCompatActivity {
         startActivity(new Intent(this, FluffleCommunity.class));
     }
 
+    public void onMainMenu(View view){
+        startActivity(new Intent(this, MainMenu.class));
+    }
+
     public void onLogout(View view){
         localUserDatabase.clearData();
         startActivity(new Intent(this, OpenPage.class));

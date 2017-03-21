@@ -91,6 +91,10 @@ public class EditDetails extends AppCompatActivity {
         new EditDetails.BackgroundTask().execute(type, id, name, email, username, password);
 
     }
+    public void onMainMenu(View view){
+        startActivity(new Intent(this, MainMenu.class));
+    }
+
     public void onLogout(View view){
         localDatabase.clearData();
         startActivity(new Intent(this, OpenPage.class));

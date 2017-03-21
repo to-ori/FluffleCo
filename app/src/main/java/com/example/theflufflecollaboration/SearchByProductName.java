@@ -8,6 +8,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -22,6 +26,8 @@ import java.net.URLEncoder;
 
 public class SearchByProductName extends AppCompatActivity {
 
+    JSONObject jsonObject;
+    JSONArray jsonArray;
     LocalUserDatabase localUserDatabase;
     EditText et_ProductName;
     String json_string, productName;
@@ -34,8 +40,8 @@ public class SearchByProductName extends AppCompatActivity {
     }
 
     public void onSearch(View view){
-        String productname = et_ProductName.getText().toString();
-        new BackgroundTask().execute(productname);
+        productName = et_ProductName.getText().toString();
+        new BackgroundTask().execute();
     }
 
     public void onLogout(View view){
@@ -43,8 +49,17 @@ public class SearchByProductName extends AppCompatActivity {
         startActivity(new Intent(this, OpenPage.class));
     }
 
-    public void checkString(){
-        if(json_string==null){
+    public void onMainMenu(View view){
+        startActivity(new Intent(this, MainMenu.class));
+    }
+
+    public void checkString(){ try{
+        jsonObject = new JSONObject(json_string);
+        jsonArray = jsonObject.getJSONArray("server_response");
+    } catch (JSONException e) {
+        e.printStackTrace();
+    }
+        if(jsonArray.length()<1){
             Toast.makeText(getApplicationContext(), "No products found", Toast.LENGTH_LONG).show();
         }else {
             Intent intent = new Intent(this, DisplayListView.class);
@@ -69,7 +84,7 @@ public class SearchByProductName extends AppCompatActivity {
         protected String doInBackground(String... params) {
 
 
-            String productName = params[0];
+
             URL url = null;
 
 

@@ -99,6 +99,13 @@
             android:id="@+id/rb_food" />
 
         <RadioButton
+            android:text="bedding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton"
+            android:layout_weight="1" />
+
+        <RadioButton
             android:text="accessories"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
@@ -148,6 +155,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="14dp"
-        android:id="@+id/productSubmitbtn" />
+        android:id="@+id/productSubmitbtn"
+        android:onClick="onProductSubmit"/>
 
 </RelativeLayout>
