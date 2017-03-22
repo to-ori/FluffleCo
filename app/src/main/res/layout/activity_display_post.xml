@@ -77,26 +77,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <Button
-        android:text="View comments"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="107dp"
-        android:id="@+id/ViewCommentsbtn"
-        android:onClick="onViewComments"/>
-
-    <Button
-        android:text="Add Comment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="48dp"
-        android:id="@+id/AddCommentbtn"
-        android:onClick="onComment"/>
-
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -118,7 +98,27 @@
         android:layout_alignParentEnd="true"
         android:onClick="onLogout"/>
 
+    <Button
+        android:text="View comments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="19dp"
+        android:id="@+id/ViewCommentsbtn"
+        android:onClick="onViewComments"
+        android:layout_above="@+id/mainMenu"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
+    <Button
+        android:text="Add Comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/AddCommentbtn"
+        android:onClick="onComment"
+        android:layout_alignBaseline="@+id/ViewCommentsbtn"
+        android:layout_alignBottom="@+id/ViewCommentsbtn"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 
 </RelativeLayout>

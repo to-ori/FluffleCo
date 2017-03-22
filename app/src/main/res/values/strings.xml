@@ -24,4 +24,7 @@
     <string name="submit">Submit</string>
     <string name="log_out">Log out</string>
     <string name="logo_home_description">App Logo To Represent Home Page</string>
+    <string name="mainmessage">This is your main menu, from here you can edit your details, search products and enter the Fluffle Community.\nYou can return to this menu at any time by selecting the logo image seen below.</string>
+    <string name="searchbymessage">Here you can search through all the products we have details on.\nOnce you find what your looking for you can click on the products name to see more details.\nYou can also see reviews people have left for that product or leave your own.\n****We are still growing our range of products so if you can\'t find what your looking, check back again soon. Or why not post in the Fluffle Community and see if any of our other member can help you out.**** </string>
+    <string name="FluffelCoWelcomeMessage">Welcome to the community section of the Fluffle Collaboration.\nNeed advice??\nMaybe you have a wealth of knowledge you\'d like to share.\nHere you can interact with other members of the community. You can view posts and reply to them, or even create a post of your own. \nHOP TO IT!!!!</string>
 </resources>

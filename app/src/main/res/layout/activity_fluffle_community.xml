@@ -57,7 +57,7 @@
         android:onClick="onViewPost"/>
 
     <TextView
-        android:text="Welcome to the community section of the Fluffle Collaboration.\nNeed advice??\nMaybe you have a wealth of knowledge you'd like to share.\nHere you can interact with other members of the community. You can view posts and reply to them, or even create a post of your own. \nHop TO IT!!!! "
+        android:text="@string/FluffelCoWelcomeMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView26"

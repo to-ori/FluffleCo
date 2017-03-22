@@ -1,5 +1,6 @@
 package com.example.theflufflecollaboration;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -41,6 +42,10 @@ public class AddProduct extends AppCompatActivity  {
         et_desc= (EditText) findViewById(R.id.et_description);
 
     }
+
+   public void onMainMenu(View view){
+       startActivity(new Intent(this, OpenPage.class));
+   }
 
 
 
