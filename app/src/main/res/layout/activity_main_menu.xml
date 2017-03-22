@@ -44,39 +44,6 @@
         android:layout_alignParentEnd="true"
         android:onClick="onLogout"/>
 
-    <Button
-        android:text="Community"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:id="@+id/btnC"
-        android:onClick="onCommunity"
-        android:layout_below="@+id/btnSP"
-        android:layout_alignLeft="@+id/btnUD"
-        android:layout_alignStart="@+id/btnUD"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:text="Search Products"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="37dp"
-        android:id="@+id/btnSP"
-        android:onClick="onSearchProducts"
-        android:layout_below="@+id/btnUD"
-        android:layout_alignLeft="@+id/btnC"
-        android:layout_alignStart="@+id/btnC"
-        android:layout_centerHorizontal="true" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:id="@+id/imageView"
-        android:layout_above="@+id/btnSP"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="62dp" />
-
     <TextView
         android:text="@string/mainmessage"
         android:layout_width="wrap_content"
@@ -90,13 +57,44 @@
         android:layout_centerHorizontal="true" />
 
     <Button
+        android:text="Community"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnC"
+        android:onClick="onCommunity"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Search Products"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSP"
+        android:onClick="onSearchProducts"
+        android:layout_above="@+id/logOutbnt"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="14dp" />
+
+    <Button
         android:text="User Details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnUD"
         android:onClick="onUserDetails"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView" />
+        android:layout_above="@+id/imageView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:id="@+id/imageView"
+        android:layout_marginBottom="34dp"
+        android:layout_above="@+id/btnC"
+        android:layout_alignLeft="@+id/logOutbnt"
+        android:layout_alignStart="@+id/logOutbnt" />
 
 </RelativeLayout>
