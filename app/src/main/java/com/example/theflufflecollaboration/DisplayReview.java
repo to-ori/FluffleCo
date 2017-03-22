@@ -58,7 +58,7 @@ public class DisplayReview extends AppCompatActivity {
 
             }
             String productsFound=count +" reviews found";
-            Toast.makeText(getApplicationContext(), productsFound, Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), productsFound, Toast.LENGTH_SHORT).show();
 
         } catch (JSONException e) {
             e.printStackTrace();

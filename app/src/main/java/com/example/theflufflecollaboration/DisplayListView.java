@@ -29,6 +29,7 @@ public class DisplayListView extends AppCompatActivity {
         localProductDatabase = new LocalProductDatabase(this);
         localUserDatabase= new LocalUserDatabase(this);
         productAdapter = new ProductAdapter(this, R.layout.row_layout);
+        Toast.makeText(getApplicationContext(), "To see more details for a product just click on its name.", Toast.LENGTH_LONG).show();
         listView = (ListView) findViewById(R.id.listview);
 
 
@@ -65,7 +66,7 @@ public class DisplayListView extends AppCompatActivity {
                 count++;
             }
             String productsFound=count +" products found";
-            Toast.makeText(getApplicationContext(), productsFound, Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), productsFound, Toast.LENGTH_SHORT).show();
 
 
         } catch (JSONException e) {

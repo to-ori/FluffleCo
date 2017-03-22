@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.theflufflecollaboration.DisplayPosts">
+    tools:context="com.example.theflufflecollaboration.DisplayPost">
 
     <TextView
         android:layout_width="wrap_content"
@@ -60,7 +60,9 @@
         android:layout_alignBaseline="@+id/textView34"
         android:layout_alignBottom="@+id/textView34"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/textView34"
+        android:layout_toEndOf="@+id/textView34" />
 
     <TextView
         android:text="TextView"
@@ -82,7 +84,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="107dp"
-        android:id="@+id/ViewCommentsbtn" />
+        android:id="@+id/ViewCommentsbtn"
+        android:onClick="onViewComments"/>
 
     <Button
         android:text="Add Comment"
@@ -91,7 +94,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="48dp"
-        android:id="@+id/AddCommentbtn" />
+        android:id="@+id/AddCommentbtn"
+        android:onClick="onComment"/>
 
     <ImageButton
         android:layout_width="wrap_content"

@@ -35,13 +35,10 @@ public class DisplayListOfPost extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Post selectedPost = (Post) listView.getItemAtPosition(position);
                 localPostDatabase.storePost(selectedPost);
-                Intent i = new Intent (DisplayListOfPost.this, DisplayPosts.class );
+                Intent i = new Intent (DisplayListOfPost.this, DisplayPost.class );
                 startActivity(i);
             }});
-        listView.setAdapter(postAdapter);
-        json_string =getIntent().getExtras().getString("json_data");
-
-
+         listView.setAdapter(postAdapter);
 
             json_string = getIntent().getExtras().getString("json_data");
             try {
@@ -63,7 +60,7 @@ public class DisplayListOfPost extends AppCompatActivity {
                     count++;
                 }
                 String productsFound=count +" posts found";
-                Toast.makeText(getApplicationContext(), productsFound, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), productsFound, Toast.LENGTH_SHORT).show();
 
 
             } catch (JSONException e) {

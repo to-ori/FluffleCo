@@ -57,6 +57,7 @@ public class FluffleCommunity extends AppCompatActivity {
         if(jsonArray.length()<1){
             Toast.makeText(getApplicationContext(), "No posts found", Toast.LENGTH_LONG).show();
         }else {
+            Toast.makeText(getApplicationContext(), "To see a post just click on it.", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(this, DisplayListOfPost.class);
             intent.putExtra("json_data",json_string);
             startActivity(intent );

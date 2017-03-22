@@ -35,10 +35,10 @@
         <activity android:name=".UserLogin" />
         <activity android:name=".FluffleCommunity" />
         <activity android:name=".CreatePost" />
-        <activity android:name=".DisplayPosts" />
-        <activity android:name=".ReplyToPost" />
+        <activity android:name=".DisplayPost" />
         <activity android:name=".DisplayListOfPost" />
-        <activity android:name=".DisplayCommentOnReview"></activity>
+        <activity android:name=".DisplayCommentOnPost" />
+        <activity android:name=".AddComment"></activity>
     </application>
 
 </manifest>
