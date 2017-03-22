@@ -1,5 +1,6 @@
 package com.example.theflufflecollaboration;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,7 @@ import java.net.URLEncoder;
 
 public class Register extends AppCompatActivity {
     EditText name, surname,  username, password, confirmPass;
+    String result;
 
 
     @Override
@@ -46,15 +48,23 @@ public class Register extends AppCompatActivity {
             String type = "register";
             new Register.BackgroundTask().execute(type, str_name, str_surname, str_username, str_password);
         } else {
-            //dispaly a pop up message to say passwords not the same.
+            //display a pop up message to say passwords not the same.
             Toast pass = Toast.makeText(Register.this, "Passwords do not match!!", Toast.LENGTH_SHORT);
             pass.show();
         }
     }
 
+        public void checkresult(){
+            Toast.makeText(Register.this, result, Toast.LENGTH_SHORT).show();
+
+            if (result.equals("Registration Successful")){
+            startActivity(new Intent(this, UserLogin.class));
+        }
+    }
+
+
     class BackgroundTask extends AsyncTask<String, Void,String> {
 
-        String result;
         String register_url;
 
 
@@ -112,8 +122,8 @@ public class Register extends AppCompatActivity {
                     InputStream inputStream = httpURLConnection.getInputStream();
                     //iso-8859-1 is the type od data we are expecting
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
-                    String result = "";
-                    String line = "";
+                    result="";
+                    String line;
 
                     while ((line = bufferedReader.readLine()) != null) {
                         result += line;
@@ -136,7 +146,7 @@ public class Register extends AppCompatActivity {
 
             @Override
             protected void onPostExecute(String result) {
-                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+                checkresult();
             }
 
             @Override
