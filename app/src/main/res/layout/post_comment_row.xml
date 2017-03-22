@@ -4,13 +4,12 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:text="Written By: "
+        android:text="@string/written_by"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView35" />
 
     <TextView
-        android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -23,7 +22,6 @@
         android:layout_alignParentEnd="true" />
 
     <TextView
-        android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView35"

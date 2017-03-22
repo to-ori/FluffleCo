@@ -16,11 +16,11 @@ import java.util.List;
  * Created by 11486248 on 22/03/2017.
  */
 
-public class ReplyAdapter extends ArrayAdapter{
+class ReplyAdapter extends ArrayAdapter{
 
-    List list = new ArrayList();
+    private List list = new ArrayList();
 
-    public ReplyAdapter(Context context, int resource) {
+    ReplyAdapter(Context context, int resource) {
         super(context, resource);
     }
 
@@ -43,13 +43,13 @@ public class ReplyAdapter extends ArrayAdapter{
     }
 
 
-    static  class ReplyHolder{
+    private static  class ReplyHolder{
         TextView tx_username, tx_reply;
     }
 
     @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         View row;
         row=convertView;
         ReplyAdapter.ReplyHolder replyHolder;
@@ -70,8 +70,10 @@ public class ReplyAdapter extends ArrayAdapter{
 
         ReplyToPost reply = (ReplyToPost) this.getItem(position);
 
-        replyHolder.tx_username.setText(reply.getReply_user_name());
-        replyHolder.tx_reply.setText(reply.getReply_comment());
+        if (reply != null) {
+            replyHolder.tx_username.setText(reply.getReply_user_name());
+            replyHolder.tx_reply.setText(reply.getReply_comment());
+        }
 
         return row;
     }

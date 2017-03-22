@@ -16,4 +16,12 @@
     <string name="logout">Logout</string>
     <string name="name1">Name:</string>
     <string name="user_details">User Details</string>
+    <string name="product_type">Product type</string>
+    <string name="pet_type">Pet Type</string>
+    <string name="written_by">Written By:</string>
+    <string name="original_post">Original Post:</string>
+    <string name="your_reply">Your Reply:</string>
+    <string name="submit">Submit</string>
+    <string name="log_out">Log out</string>
+    <string name="logo_home_description">App Logo To Represent Home Page</string>
 </resources>
