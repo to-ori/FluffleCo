@@ -34,7 +34,7 @@
         android:textStyle="normal|bold" />
 
     <TextView
-        android:text="TextView"
+        android:text="Post: "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView34"
@@ -65,7 +65,7 @@
         android:layout_toEndOf="@+id/textView34" />
 
     <TextView
-        android:text="TextView"
+        android:text="Title: "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="17dp"
