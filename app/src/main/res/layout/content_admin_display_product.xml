@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<TextView
+android:text="Product Name:"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_alignParentTop="true"
+android:layout_alignParentLeft="true"
+android:layout_alignParentStart="true"
+android:id="@+id/textView9"
+android:textStyle="normal|bold" />
+
+<TextView
+
+android:layout_width="200dp"
+android:layout_height="wrap_content"
+android:layout_alignParentTop="true"
+android:layout_toRightOf="@+id/textView9"
+android:layout_marginLeft="30dp"
+android:layout_marginStart="30dp"
+android:id="@+id/tx_product_name" />
+
+<TextView
+android:text="Product Descirption:"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_below="@+id/textView9"
+android:layout_alignParentLeft="true"
+android:layout_alignParentStart="true"
+android:layout_marginTop="38dp"
+android:id="@+id/textView13"
+android:textStyle="normal|bold" />
+
+<TextView
+
+android:layout_width="500dp"
+android:layout_height="wrap_content"
+android:layout_below="@+id/textView13"
+
+android:layout_marginTop="21dp"
+android:id="@+id/tx_description"
+android:layout_alignParentRight="true"
+android:layout_alignParentEnd="true" />
+
+<TextView
+
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_alignTop="@+id/textView15"
+android:layout_toRightOf="@+id/textView9"
+android:layout_toEndOf="@+id/textView9"
+android:layout_marginLeft="12dp"
+android:layout_marginStart="12dp"
+android:id="@+id/tx_pet_type" />
+
+<TextView
+android:text="Catagory: "
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_below="@+id/tx_pet_type"
+android:layout_alignParentLeft="true"
+android:layout_alignParentStart="true"
+android:layout_marginTop="17dp"
+android:id="@+id/textView17"
+android:textStyle="normal|bold" />
+
+<TextView
+
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_alignTop="@+id/textView17"
+android:layout_alignRight="@+id/tx_pet_type"
+android:layout_alignEnd="@+id/tx_pet_type"
+android:id="@+id/tx_product_type" />
+
+<TextView
+android:text="Designed for:"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginBottom="167dp"
+
+android:id="@+id/textView15"
+android:textStyle="normal|bold"
+android:layout_alignParentBottom="true"
+android:layout_alignParentLeft="true"
+android:layout_alignParentStart="true" />
+</RelativeLayout>

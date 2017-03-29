@@ -29,6 +29,7 @@ public class AddProduct extends AppCompatActivity  {
     private static RadioButton radio_pet, radio_product;
     private static Button button_sbm;
     EditText et_name, et_desc;
+    LocalProductDatabase localPDB;
 
 
     @Override
@@ -36,6 +37,7 @@ public class AddProduct extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
         onClickListenerButton();
+        localPDB = new LocalProductDatabase(this);
 
         //set Edit text variable equal edittext fields in the xml page
         et_name= (EditText) findViewById(R.id.et_productname);
@@ -47,6 +49,11 @@ public class AddProduct extends AppCompatActivity  {
        startActivity(new Intent(this, OpenPage.class));
    }
 
+    private void showProdcut() {
+        Product Thisproduct = new Product("na", pname, description, pet_type, product_types);
+        localPDB.storeProduct(Thisproduct);
+        startActivity(new Intent(this, AdminDisplayProduct.class));
+    }
 
 
     public void onClickListenerButton(){
@@ -148,6 +155,7 @@ public class AddProduct extends AppCompatActivity  {
         @Override
         protected void onPostExecute(String result) {
             Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+            showProdcut();
         }
 
         @Override
@@ -156,5 +164,6 @@ public class AddProduct extends AppCompatActivity  {
         }
 
     }
+
 
 }

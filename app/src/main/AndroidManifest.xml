@@ -38,7 +38,11 @@
         <activity android:name=".DisplayPost" />
         <activity android:name=".DisplayListOfPost" />
         <activity android:name=".DisplayCommentOnPost" />
-        <activity android:name=".AddComment"></activity>
+        <activity android:name=".AddComment" />
+        <activity
+            android:name=".AdminDisplayProduct"
+            android:label="@string/title_activity_admin_display_product"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
