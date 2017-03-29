@@ -44,7 +44,7 @@ public class ProductAdapter extends ArrayAdapter {
 
     @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         View row;
         row=convertView;
         ProductHolder productHolder;
@@ -64,6 +64,7 @@ public class ProductAdapter extends ArrayAdapter {
         }
 
         Product product = (Product) this.getItem(position);
+        assert product != null;
         productHolder.tx_name.setText(product.getName());
         productHolder.tx_pet.setText(product.getPet_type());
         productHolder.tx_product.setText(product.getProduct_type());
@@ -71,7 +72,7 @@ public class ProductAdapter extends ArrayAdapter {
         return row;
     }
 
-    static class ProductHolder
+    private static class ProductHolder
     {
         TextView tx_name, tx_pet, tx_product;
     }

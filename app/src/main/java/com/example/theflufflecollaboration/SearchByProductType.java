@@ -46,7 +46,7 @@ public class SearchByProductType extends AppCompatActivity {
     if(jsonArray.length()<1){
             Toast.makeText(getApplicationContext(), "No products found", Toast.LENGTH_LONG).show();
         }else {
-            Intent intent = new Intent(this, DisplayListView.class);
+            Intent intent = new Intent(this, DisplayProductListView.class);
             intent.putExtra("json_data",json_string);
             startActivity(intent );
         }

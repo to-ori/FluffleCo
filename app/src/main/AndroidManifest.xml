@@ -24,7 +24,7 @@
         <activity android:name=".SearchByProductName" />
         <activity android:name=".SearchByProductType" />
         <activity android:name=".SearchByPetType" />
-        <activity android:name=".DisplayListView" />
+        <activity android:name=".DisplayProductListView" />
         <activity android:name=".DisplayProduct" />
         <activity android:name=".DisplayReview" />
         <activity android:name=".LeaveReview" />

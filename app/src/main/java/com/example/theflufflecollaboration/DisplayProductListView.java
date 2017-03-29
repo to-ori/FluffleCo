@@ -12,7 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class DisplayListView extends AppCompatActivity {
+public class DisplayProductListView extends AppCompatActivity {
     LocalProductDatabase localProductDatabase;
     LocalUserDatabase localUserDatabase;
     String json_string;
@@ -25,7 +25,7 @@ public class DisplayListView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.display_listview_layout);
+        setContentView(R.layout.display_product_listview_layout);
         localProductDatabase = new LocalProductDatabase(this);
         localUserDatabase= new LocalUserDatabase(this);
         productAdapter = new ProductAdapter(this, R.layout.row_layout);
@@ -38,7 +38,7 @@ public class DisplayListView extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Product selectedProduct = (Product) listView.getItemAtPosition(position);
                 localProductDatabase.storeProduct(selectedProduct);
-                Intent i = new Intent (DisplayListView.this, DisplayProduct.class );
+                Intent i = new Intent (DisplayProductListView.this, DisplayProduct.class );
                 startActivity(i);
 
             }

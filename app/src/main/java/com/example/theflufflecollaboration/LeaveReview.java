@@ -51,9 +51,6 @@ public class LeaveReview extends AppCompatActivity {
         productID=product.getId();
         productName=product.getName();
         tx_ProductName.setText(productName);
-
-
-
     }
 
     public void onLogout(View view){
@@ -80,7 +77,7 @@ public class LeaveReview extends AppCompatActivity {
         new BackgroundTask().execute();
     }
     public void onMainMenu(View view){
-        startActivity(new Intent(this, MainMenu.class));
+        startActivity(new Intent(LeaveReview.this, MainMenu.class));
     }
 
     //this class interacts with the PHP file that interacts with the server

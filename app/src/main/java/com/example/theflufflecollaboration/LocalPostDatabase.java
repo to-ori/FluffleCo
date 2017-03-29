@@ -7,16 +7,16 @@ import android.content.SharedPreferences;
  * Created by 11486248 on 21/03/2017.
  */
 
-public class LocalPostDatabase {
-    public static final String SP_NAME = "PostDetails";
+class LocalPostDatabase {
+    private static final String SP_NAME = "PostDetails";
 
-    SharedPreferences localPostDatabase;
-    public LocalPostDatabase(Context context){
+    private SharedPreferences localPostDatabase;
+    LocalPostDatabase(Context context){
         localPostDatabase=context.getSharedPreferences(SP_NAME,0);
     }
 
     //store a post
-    public void storePost(Post post){
+    void storePost(Post post){
         SharedPreferences.Editor spEditor = localPostDatabase.edit();
         spEditor.putString("id",post.getPost_id());
         spEditor.putString("title",post.getPost_titel());
@@ -26,7 +26,7 @@ public class LocalPostDatabase {
     }
 
     //this method returns the details stored in the form of a post object
-    public Post getStoredPost(){
+    Post getStoredPost(){
         String id, titel, content, userName;
         //here the first string is the key for the vaule we want to get back
         //the second string is the what to use if nothing is returned

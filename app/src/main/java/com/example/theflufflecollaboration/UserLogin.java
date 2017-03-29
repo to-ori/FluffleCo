@@ -142,9 +142,6 @@ public class UserLogin extends AppCompatActivity {
             int count = 0;
             while (count < jsonArray.length()) {
                 JSONObject JO = jsonArray.getJSONObject(count);
-
-
-
                 id = JO.getString("id");
                 name = JO.getString("name");
                 email = JO.getString("email");

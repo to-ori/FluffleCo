@@ -8,7 +8,7 @@ import android.content.SharedPreferences;
  */
 
 public class LocalUserDatabase {
-    public static final String SP_NAME = "UserDetails";
+    private static final String SP_NAME = "UserDetails";
     SharedPreferences localUserDatabase;
 
     public LocalUserDatabase(Context context)
@@ -16,7 +16,7 @@ public class LocalUserDatabase {
         localUserDatabase = context.getSharedPreferences(SP_NAME, 0);
          }
     //store a new user
-    public void storeData(Contact contact)
+    void storeData(Contact contact)
     {
         SharedPreferences.Editor spEditor = localUserDatabase.edit();
         spEditor.putString("id", contact.id);
@@ -28,19 +28,18 @@ public class LocalUserDatabase {
     }
 
     //return the detail of the logge din user
-    public Contact getLoggedInUser()
+    Contact getLoggedInUser()
     {
         String id= localUserDatabase.getString("id","");
         String name = localUserDatabase.getString("Name","");
         String email = localUserDatabase.getString("Email", "");
         String usernamne = localUserDatabase.getString("Username", "");
         String password = localUserDatabase.getString("Password","");
-        Contact storedConatct = new Contact(id, name, email, usernamne,password);
-        return storedConatct;
+        return new Contact(id, name, email, usernamne,password);
     }
 
     //set the status of the user, ie logged in or out
-    public void setUserLoggedIn(boolean loggedIn)
+    void setUserLoggedIn(boolean loggedIn)
     {
         SharedPreferences.Editor spEditor = localUserDatabase.edit();
         spEditor.putBoolean("loggedIn", loggedIn);
@@ -48,7 +47,7 @@ public class LocalUserDatabase {
     }
 
     //check if a user is logged in or out
-    public boolean getUserLoggedIn()
+    boolean getUserLoggedIn()
     {
         return localUserDatabase.getBoolean("loggedIn", false);
     }
