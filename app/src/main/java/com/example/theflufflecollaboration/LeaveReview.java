@@ -27,7 +27,7 @@ public class LeaveReview extends AppCompatActivity {
     Product product;
     LocalProductDatabase localProductDatabase;
     LocalUserDatabase localUserDatabase;
-    String reviewTitle, reviewContent, reviewRating, userID, productID, productName;
+    String reviewTitle, reviewContent, reviewRating, userID, productID, productName, json_string;
     int reviewRatingint;
     EditText et_title, et_rating, et_review;
     TextView tx_ProductName;
@@ -69,18 +69,36 @@ public class LeaveReview extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Ratings are from 1-5, anything higher will be taken as 5", Toast.LENGTH_LONG).show();
             reviewRatingint=5;
         }
-        if(reviewRatingint<1){
+        else if(reviewRatingint<1){
             Toast.makeText(getApplicationContext(), "Ratings are from 1-5, anything lower will be taken as 1", Toast.LENGTH_LONG).show();
             reviewRatingint=1;
+        } else if(reviewTitle.equals("")){
+            Toast.makeText(getApplicationContext(), "Please enter a title", Toast.LENGTH_LONG).show();
         }
-
-        new BackgroundTask().execute();
+        else if (reviewContent.equals("")){
+            Toast.makeText(getApplicationContext(), "Please fill in the content field", Toast.LENGTH_LONG).show();
+        }
+        else {
+            new BackgroundTask().execute();
+        }
     }
     public void onMainMenu(View view){
         startActivity(new Intent(LeaveReview.this, MainMenu.class));
     }
 
-    //this class interacts with the PHP file that interacts with the server
+    public void checkString(){
+        if(json_string==null){
+            Toast.makeText(getApplicationContext(), "No reviews for this product found", Toast.LENGTH_LONG).show();
+        }else {
+
+            Intent intent = new Intent(this, DisplayReview.class);
+            intent.putExtra("json_data",json_string);
+            startActivity(intent );
+        }
+
+    }
+
+    //this class interacts with the PHP file that interacts with the server to add a review
     class BackgroundTask extends AsyncTask<Void, Void,String> {
 
         String result;
@@ -159,6 +177,7 @@ public class LeaveReview extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+            new ReviewBackgroundTask().execute();
         }
 
         @Override
@@ -166,5 +185,81 @@ public class LeaveReview extends AppCompatActivity {
             super.onProgressUpdate(values);
         }
 
+    }
+
+    //this class is used to get all relavent reviews from the sever and then calls
+    //the checkString method to check whats returend from the server and open the relative activity
+    class ReviewBackgroundTask extends AsyncTask<String, Void,String>
+    {
+        String result;
+        String review_url;
+        String JSON_STRING;
+
+        @Override
+        protected void onPreExecute() {
+            review_url="http://danu6.it.nuigalway.ie/FluffelCo/reviews.php";
+            result = null;
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+
+            String productid = params[0];
+            URL url = null;
+
+
+            try {
+
+                url = new URL(review_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                String post_data = URLEncoder.encode("productId", "UTF-8") + "=" + URLEncoder.encode(productid, "UTF-8");
+
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+
+                InputStream inputStream = httpURLConnection.getInputStream();
+                //iso-8859-1 is the type od data we are expecting
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                StringBuilder stringBuilder = new StringBuilder();
+
+                while ((JSON_STRING = bufferedReader.readLine()) != null) {
+                    stringBuilder.append(JSON_STRING + "\n");
+                }
+
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                result = stringBuilder.toString().trim();
+                return result;
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return result;
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            json_string=result;
+            checkString();
+
+        }
     }
 }

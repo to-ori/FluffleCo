@@ -8,6 +8,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -23,8 +27,10 @@ import java.net.URLEncoder;
 public class CreatePost extends AppCompatActivity {
 
     LocalUserDatabase localUserDatabase;
-    String p_title, p_content, post_user_id;
+    String p_title, p_content, post_user_id, json_string;
     EditText titleET, contentET;
+    JSONObject jsonObject;
+    JSONArray jsonArray;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,10 +51,20 @@ public class CreatePost extends AppCompatActivity {
     public void onMainMenu(View view){
         startActivity(new Intent(this, MainMenu.class));
     }
+
+
     public void onPostToCommunity(View view){
         p_title=titleET.getText().toString();
         p_content=contentET.getText().toString();
-        new BackgroundTask().execute();
+        if(p_title.equals("")){
+            Toast.makeText(getApplicationContext(), "Please fill in title", Toast.LENGTH_LONG).show();
+        }
+        else if(p_content.equals("")){
+            Toast.makeText(getApplicationContext(), "Please fill in content", Toast.LENGTH_LONG).show();
+        }
+        else {
+            new BackgroundTask().execute();
+        }
     }
     //this class interacts with the PHP file that interacts with the server
     class BackgroundTask extends AsyncTask<Void, Void,String> {
@@ -125,6 +141,7 @@ public class CreatePost extends AppCompatActivity {
         protected void onPostExecute(String result) {
             //post toat to screen with result
             Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+            new ShowPostsBackgroundTask().execute();
         }
 
         @Override
@@ -133,4 +150,84 @@ public class CreatePost extends AppCompatActivity {
         }
 
     }
+
+    class ShowPostsBackgroundTask extends AsyncTask<Void, Void,String>
+    {
+        String result;
+        String showPosts_url;
+        String JSON_STRING;
+
+        @Override
+        protected void onPreExecute() {
+            showPosts_url="http://danu6.it.nuigalway.ie/FluffelCo/selectAllPosts.php";
+            result = null;
+        }
+
+        @Override
+        protected String doInBackground(Void... params) {
+
+            URL url = null;
+            try {
+
+                url = new URL(showPosts_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+
+
+                InputStream inputStream = httpURLConnection.getInputStream();
+                //iso-8859-1 is the type od data we are expecting
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                StringBuilder stringBuilder = new StringBuilder();
+
+                while ((JSON_STRING = bufferedReader.readLine()) != null) {
+                    stringBuilder.append(JSON_STRING + "\n");
+                }
+
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                result = stringBuilder.toString().trim();
+                return result;
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return result;
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            json_string=result;
+            checkString();
+
+        }
+    }
+
+    private void checkString() {
+        try{
+            jsonObject = new JSONObject(json_string);
+            jsonArray = jsonObject.getJSONArray("server_response");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if(jsonArray.length()<1){
+            Toast.makeText(getApplicationContext(), "No posts found", Toast.LENGTH_LONG).show();
+        }else {
+            Toast.makeText(getApplicationContext(), "To see a post just click on it.", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, DisplayListOfPost.class);
+            intent.putExtra("json_data",json_string);
+            startActivity(intent );
+        }
+    }
+
 }

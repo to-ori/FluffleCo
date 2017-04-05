@@ -135,6 +135,7 @@ public class AddComment extends AppCompatActivity {
         protected void onPostExecute(String result) {
             //post toat to screen with result
             Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+            startActivity(new Intent(AddComment.this, DisplayPost.class));
         }
 
         @Override
