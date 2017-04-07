@@ -204,8 +204,6 @@ public class LeaveReview extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
 
-
-            String productid = params[0];
             URL url = null;
 
 
@@ -219,7 +217,7 @@ public class LeaveReview extends AppCompatActivity {
 
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-                String post_data = URLEncoder.encode("productId", "UTF-8") + "=" + URLEncoder.encode(productid, "UTF-8");
+                String post_data = URLEncoder.encode("productId", "UTF-8") + "=" + URLEncoder.encode(productID, "UTF-8");
 
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
